@@ -1,9 +1,4 @@
-## Legal
-
-By submitting a pull request, you represent that you have the right to license
-your contribution to Apple and the Swift project, and agree by submitting the
-patch that your contributions are licensed under the Apache 2.0 license (see
-`LICENSE.txt`).
+# Contributing to Swift CMake Examples
 
 ## How to submit a bug report
 
@@ -30,4 +25,4 @@ At this time, examples require [Swift](https://github.com/apple/swift),
 requirements for other compilers.
 
 To contribute new examples, please open a pull request at
-https://github.com/apple/swift-cmake-examples.
+https://github.com/swiftlang/swift-cmake-examples.
