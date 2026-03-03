@@ -40,6 +40,9 @@ jobs:
           hash: ${{ matrix.cmake.hash }}
       - name: Run Tests
         shell: bash
+        env:
+          CMAKE: ${{ steps.install-cmake.outputs.cmake }}
+          CTEST: ${{ steps.install-cmake.outputs.ctest }}
         run: |
-          "${{ steps.install-cmake.outputs.cmake }}" -G Ninja -B test -S swift-cmake-examples -DCMAKE_BUILD_TYPE=Release
-          "${{ steps.install-cmake.outputs.ctest }}" --output-on-failure --test-timeout 150 --test-dir test -j
+          "$CMAKE" -G Ninja -B test -S swift-cmake-examples -DCMAKE_BUILD_TYPE=Release
+          "$CTEST" --output-on-failure --test-timeout 150 --test-dir test -j

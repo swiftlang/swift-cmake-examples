@@ -21,17 +21,23 @@ runs:
   steps:
     - name: Download CMake
       shell: bash
+      env:
+        CMAKE_URL: ${{ inputs.url }}
       run: |
-        curl -Llo /tmp/cmake.tar.gz "${{ inputs.url }}"
+        curl -Llo /tmp/cmake.tar.gz "$CMAKE_URL"
     - name: Verify CMake
       shell: bash
+      env:
+        CMAKE_HASH: ${{ inputs.hash }}
       run:
-        echo "${{ inputs.hash }}  /tmp/cmake.tar.gz" | shasum -a 256 -c-
+        echo "$CMAKE_HASH  /tmp/cmake.tar.gz" | shasum -a 256 -c-
     - name: Unpack CMake
       shell: bash
       id: unpack-cmake
+      env:
+        CMAKE_INSTALL_DIR: ${{ inputs.install_dir }}
       run: |
-        mkdir "${{ inputs.install_dir }}"
-        tar xf /tmp/cmake.tar.gz --strip-components=1 -C "${{ inputs.install_dir }}"
-        echo "cmake-path=${{ inputs.install_dir }}/bin/cmake" >> "$GITHUB_OUTPUT"
-        echo "ctest-path=${{ inputs.install_dir }}/bin/ctest" >> "$GITHUB_OUTPUT"
+        mkdir "$CMAKE_INSTALL_DIR"
+        tar xf /tmp/cmake.tar.gz --strip-components=1 -C "$CMAKE_INSTALL_DIR"
+        echo "cmake-path=$CMAKE_INSTALL_DIR/bin/cmake" >> "$GITHUB_OUTPUT"
+        echo "ctest-path=$CMAKE_INSTALL_DIR/bin/ctest" >> "$GITHUB_OUTPUT"
