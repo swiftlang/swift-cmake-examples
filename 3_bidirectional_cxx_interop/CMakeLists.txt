@@ -5,7 +5,7 @@
 #
 # See https://swift.org/LICENSE.txt for license information
 
-cmake_minimum_required(VERSION 3.26...3.29)
+cmake_minimum_required(VERSION 3.26...4.2)
 
 # Project PingPong: Bouncing control flow between Swift and C++ like a ping pong
 #                   ball.
