@@ -36,9 +36,9 @@ jobs:
         run: apt update && apt install -y curl ninja-build
       - name: Setup CMake
         id: install-cmake
-        uses: ./swift-cmake-examples/.github/actions/cmake-action
+        uses: swiftlang/github-workflows/.github/actions/install-cmake@0.0.15
         with:
-          url: "https://github.com/Kitware/CMake/releases/download/v${{matrix.cmake.version}}/cmake-${{matrix.cmake.version}}-linux-x86_64.tar.gz"
+          cmake-version: ${{ matrix.cmake.version }}
           hash: ${{ matrix.cmake.hash }}
       - name: Run Tests
         shell: bash
